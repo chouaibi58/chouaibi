@@ -1,0 +1,69 @@
+<html>
+	<head>
+		<style>
+			input{
+			 width:50px;
+			 height:50px;
+			 }
+		</style>
+	</head>
+	<body>
+		<center><div id='d'>player 1</div></table><div id='d2'>this game is under playing</div><table border='1'>
+			<tr><td><input type='button'id='1'value=''onclick='f(id)'></td><td><input type='button'id='2'value=''onclick='f(id)'></td><td><input type='button'id='3'value=''onclick='f(id)'></td></tr>
+			<tr><td><input type='button'id='4'value=''onclick='f(id)'></td><td><input type='button'id='5'value=''onclick='f(id)'></td><td><input type='button'id='6'value=''onclick='f(id)'></td></tr>
+			<tr><td><input type='button'id='7'value=''onclick='f(id)'></td><td><input type='button'id='8'value=''onclick='f(id)'></td><td><input onclick='f(id)'type='button'id='9'value=''></td></tr>
+		</center>
+		<script>
+			document.getElementById('1').style.color='red'
+			
+			function nb(){
+			x=1
+			n=0
+			for (let i=0;i<9;i++)
+			{if (document.getElementById(x).value.length>0)
+				{n+=1}
+			x+=1}
+			
+			return n}
+			function disable(){
+				
+				for(let i=1;i<10;i++)
+				{
+					document.getElementById(i).setAttribute("disabled","disabled")
+					
+					}
+					}				
+			function verif(){
+			if (nb()>=5&&(check('X')||check('O')))
+				{b=check('X')
+				b1=check('O')
+				b==true ? document.getElementById('d2').innerHTML=('player 1 win '):b1==true ? document.getElementById('d2').innerHTML=('player 2 win '):n=4
+				b==true || b1==true?disable():v="r"
+				b==true || b1==true?document.getElementById('d').innerHTML='this game is over':j=0
+				}
+			else{
+				if(nb()==9)
+				{
+				document.getElementById('d2').innerHTML=('draw')
+				disable()
+				document.getElementById('d').innerHTML='this game is over'}
+				}
+			}
+			function check(ch){
+			(document.getElementById(1).value==ch && document.getElementById(2).value==ch && document.getElementById(3).value==ch)||(document.getElementById(1).value==ch && document.getElementById(4).value==ch && document.getElementById(7).value==ch)||(document.getElementById(2).value==ch && document.getElementById(5).value==ch && document.getElementById(8).value==ch)||(document.getElementById(3).value==ch && document.getElementById(6).value==ch && document.getElementById(9).value==ch)||(document.getElementById(4).value==ch && document.getElementById(5).value==ch && document.getElementById(6).value==ch)||(document.getElementById(7).value==ch && document.getElementById(8).value==ch && document.getElementById(9).value==ch)||(document.getElementById(1).value==ch && document.getElementById(5).value==ch && document.getElementById(9).value==ch)||(document.getElementById(3).value==ch && document.getElementById(5).value==ch && document.getElementById(7).value==ch)? x=true:x=false
+			return x
+			}
+			function f(x){
+			c=document.getElementById('d').innerHTML
+				c=='player 1' ?v='X':v='O';
+				if(document.getElementById(x).value=='')
+				 {document.getElementById(x).value=v
+				switch(c){
+				case 'player 1':document.getElementById('d').innerHTML='player 2';v='O';break;
+				case 'player 2':document.getElementById('d').innerHTML='player 1';v='X';break;}	
+				}
+				verif()
+			}
+		</script>
+	</body>
+</html>
